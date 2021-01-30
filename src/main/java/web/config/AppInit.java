@@ -1,7 +1,6 @@
 package web.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import web.model.Car;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
