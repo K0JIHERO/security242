@@ -1,13 +1,9 @@
 package web.service;
 
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import web.model.Car;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ServiceClass implements Service {
 
