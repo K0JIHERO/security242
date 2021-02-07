@@ -21,8 +21,7 @@ public class User {
     @Column(name = "EMAIL")
     private String email;
 
-    public User(int id, String name, String lastname, String email) {
-        this.id = id;
+    public User(String name, String lastname, String email) {
         this.name = name;
         this.lastname = lastname;
         this.email = email;

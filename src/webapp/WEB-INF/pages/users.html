@@ -1,15 +1,97 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<style type="text/css">
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-color: #ccc;
+    }
+
+    .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #fff;
+    }
+
+    .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #f0f0f0;
+    }
+
+    .tg .tg-4eph {
+        background-color: #f9f9f9
+    }
+</style>
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>users</title>
 </head>
 <body>
+<h1>list of users</h1>
+<div th:if="${!listUsers.isEmpty()}">
+    <table class="tg" border="3">
+        <tr>
+            <td width="80">ID</td>
+            <td width="120">Name</td>
+            <td width="120">LastName</td>
+            <td width="120">Email</td>
+            <td width="50">Edit</td>
+            <td width="50">delete</td>
+        </tr>
+        <th:block th:each="user : ${listUsers}">
+            <tr>
+                <td th:text="${user.id}"></td>
+                <td>
+                    <a th:href="@{/users/{id}(id=${user.id})}" th:text="${user.name}"></a>
+                </td>
+                <td th:text="${user.lastname}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <a th:href="@{/users/edit/{id}(id=${user.id})}">edit</a>
+                </td>
+                <td>
+                    <a th:href="@{/users/remove/{id}(id=${user.id})}">delete</a>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+<br/>
+<br/>
 <div>
-    <th:block th:each="users : ${users}">
-        <h1 th:text="${users}"></h1>
-    </th:block>
+    <h1>add user form</h1>
+    <form class="tg" action="#" th:action="@{/users/add}" th:object="${user}" method="post">
+        <p><input type="hidden" th:field="*{id}"/></p>
+        <p>name: <input type="text" th:field="*{name}" required/></p>
+        <p>lastname: <input type="text" th:field="*{lastname}" required/></p>
+        <p>email: <input type="text" th:field="*{email}" required/></p>
+        <p>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Reset" />
+        </p>
+    </form>
+</div>
+<br/>
+<div>
+    <a href="/">main</a>
 </div>
 </body>
 </html>
