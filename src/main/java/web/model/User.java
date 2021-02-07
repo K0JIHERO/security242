@@ -1,7 +1,5 @@
 package web.model;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 
 @Entity
